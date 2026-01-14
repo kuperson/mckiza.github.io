@@ -1,0 +1,265 @@
+/* assets/styles.css
+   Interstellar Cyberpunk theme — neon, starfield, glass UI
+   - Place at /assets/styles.css and keep the <link href="assets/styles.css"> in HTML
+   - Uses CSS variables for easy palette tweaks
+*/
+
+:root{
+  /* Palette */
+  --bg-0: #04050a;
+  --bg-1: linear-gradient(180deg, #050610 0%, #0b1020 60%, #05061a 100%);
+  --card-bg: rgba(255,255,255,0.025);
+  --glass-border: rgba(255,255,255,0.05);
+
+  --neon-pink: #ff2dd4;
+  --neon-cyan: #00f0ff;
+  --neon-purple: #a26bff;
+  --muted: rgba(255,255,255,0.65);
+
+  --accent: var(--neon-pink);
+  --text: #e8eef8;
+  --lead: #c7d6ff;
+
+  --radius: 12px;
+  --container-width: 1100px;
+}
+
+/* Base layout */
+* { box-sizing: border-box; }
+html,body { height:100%; }
+body{
+  margin:0;
+  min-height:100%;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: var(--bg-1);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.5;
+  position:relative;
+  overflow-x:hidden;
+}
+
+/* Starfield layer */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:0;
+  background:
+    radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,0.95), rgba(255,255,255,0) 60%),
+    radial-gradient(1px 1px at 22% 80%, rgba(255,255,255,0.9), rgba(255,255,255,0) 60%),
+    radial-gradient(1.3px 1.3px at 80% 10%, rgba(255,255,255,0.9), rgba(255,255,255,0) 60%),
+    radial-gradient(0.8px 0.8px at 60% 50%, rgba(255,255,255,0.85), rgba(255,255,255,0) 60%),
+    radial-gradient(0.9px 0.9px at 40% 30%, rgba(255,255,255,0.85), rgba(255,255,255,0) 60%),
+    radial-gradient(1px 1px at 90% 70%, rgba(255,255,255,0.8), rgba(255,255,255,0) 60%),
+    linear-gradient(180deg, rgba(6,10,20,0.12), rgba(0,0,0,0.3));
+  background-size: 300% 300%;
+  animation: slowDrift 40s linear infinite;
+  pointer-events:none;
+  opacity:0.9;
+  mix-blend-mode:screen;
+}
+
+/* subtle drifting */
+@keyframes slowDrift{
+  0% { background-position: 0% 0%; }
+  50% { background-position: 50% 100%; }
+  100% { background-position: 0% 0%; }
+}
+
+/* Container */
+.container{
+  width: calc(100% - 48px);
+  max-width: var(--container-width);
+  margin: 0 auto;
+  position:relative;
+  z-index:2; /* above starfield */
+  padding: 40px 24px;
+}
+
+/* Header */
+.site-header{
+  position:sticky;
+  top:0;
+  z-index:5;
+  backdrop-filter: blur(8px) saturate(0.9);
+  background: linear-gradient(180deg, rgba(5,6,10,0.6), rgba(5,6,10,0.25));
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+.header-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+/* Brand */
+.brand{
+  color:var(--text);
+  font-weight:700;
+  letter-spacing:0.6px;
+  text-decoration:none;
+  font-size:1.05rem;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+}
+.brand::before{
+  content:"";
+  width:10px;height:10px;border-radius:3px;
+  background:linear-gradient(45deg,var(--neon-cyan),var(--neon-pink));
+  box-shadow:0 0 10px var(--neon-pink), 0 0 24px var(--neon-cyan);
+}
+
+/* Nav */
+.primary-nav ul{ display:flex; gap:16px; margin:0; padding:0; list-style:none; }
+.primary-nav a{ color:var(--muted); text-decoration:none; font-weight:600; font-size:0.95rem; padding:10px; border-radius:8px; }
+.primary-nav a:hover{ color:var(--text); background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); box-shadow: 0 0 12px rgba(162,107,255,0.08) inset; }
+
+/* Nav toggle (mobile) */
+.nav-toggle{
+  background:transparent;
+  border:0;
+  color:var(--text);
+  font-size:1.3rem;
+  display:none;
+}
+
+/* Hero */
+.hero{
+  padding:80px 0;
+  display:flex;
+  align-items:center;
+  min-height:60vh;
+  position:relative;
+}
+.hero-inner{ max-width:900px; }
+
+h1{
+  font-size:clamp(2rem, 4.5vw, 3.25rem);
+  margin:0 0 12px 0;
+  line-height:1.03;
+  font-weight:800;
+  letter-spacing:-0.02em;
+  color:var(--text);
+  background: linear-gradient(90deg, var(--neon-pink), var(--neon-cyan), var(--neon-purple));
+  -webkit-background-clip: text;
+  background-clip:text;
+  color: transparent;
+  text-shadow: 0 2px 18px rgba(162,107,255,0.08);
+  display:inline-block;
+}
+
+/* Heading font: Orbitron for that futuristic vibe */
+h1,h2,h3,h4 { font-family: "Orbitron", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+
+/* Accent line for subheading */
+.accent{
+  color:var(--accent);
+  text-shadow: 0 0 24px color-mix(in srgb, var(--accent) 40%, transparent);
+  font-weight:700;
+  display:inline-block;
+}
+
+/* Lead paragraph */
+.lead{ color:var(--lead); font-size:1.05rem; margin-bottom:18px; }
+
+/* Buttons */
+.btn{
+  display:inline-block;
+  padding:10px 16px;
+  border-radius:10px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+  color:var(--text);
+  text-decoration:none;
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 6px 30px rgba(3,5,15,0.6), 0 0 18px rgba(0,255,255,0.02) inset;
+  font-weight:700;
+  transition:transform .15s ease, box-shadow .15s ease;
+}
+.btn.ghost{
+  background:transparent;
+  border:1px solid rgba(255,255,255,0.06);
+}
+.btn:hover{
+  transform:translateY(-4px);
+  box-shadow: 0 12px 48px rgba(0,0,0,0.6), 0 0 32px rgba(162,107,255,0.08);
+}
+
+/* Neon CTA */
+.btn.cta{
+  background: linear-gradient(90deg, var(--neon-pink), var(--neon-cyan));
+  color:#041023;
+  text-shadow:none;
+  box-shadow: 0 6px 30px rgba(162,107,255,0.18), 0 0 32px rgba(0,240,255,0.12);
+  border: none;
+}
+
+/* Sections */
+.section{ padding:48px 0; }
+.about-grid{ display:grid; grid-template-columns:1fr 320px; gap:28px; align-items:start; }
+
+/* Profile card / avatar */
+.profile-card{
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border:1px solid var(--glass-border);
+  padding:18px;
+  border-radius:14px;
+  display:flex;
+  gap:12px;
+  align-items:center;
+  backdrop-filter: blur(6px) saturate(1.1);
+  box-shadow: 0 6px 30px rgba(1,1,8,0.7), 0 0 18px rgba(162,107,255,0.03);
+}
+.avatar{ width:72px; height:72px; object-fit:cover; border-radius:8px; border:1px solid rgba(255,255,255,0.06); }
+
+/* Cards grid */
+.cards-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+  gap:18px;
+  margin-top:18px;
+}
+.card{
+  background: var(--card-bg);
+  border:1px solid var(--glass-border);
+  padding:18px;
+  border-radius:12px;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.card:hover{
+  transform: translateY(-8px);
+  box-shadow: 0 24px 60px rgba(2,2,12,0.7), 0 0 40px rgba(162,107,255,0.06);
+}
+.card h3 a{ color:var(--text); text-decoration:none; }
+.muted{ color:var(--muted); font-size:0.95rem; margin-top:8px; }
+
+/* Blog list */
+.blog-list{ padding-left:18px; margin-top:8px; color:var(--muted); }
+.blog-list a{ color:var(--muted); text-decoration:none; }
+.blog-list a:hover{ color:var(--text); text-decoration:underline; }
+
+/* Footer */
+.site-footer{
+  padding:28px 0;
+  border-top:1px solid rgba(255,255,255,0.03);
+  background: linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0));
+  font-size:0.95rem;
+  color:var(--muted);
+}
+
+/* Smaller screens */
+@media (max-width:900px){
+  .about-grid{ grid-template-columns:1fr; }
+  .primary-nav{ display:none; }
+  .nav-toggle{ display:inline-flex; }
+  .hero{ padding:56px 0; }
+}
+
+/* Accessibility: reduced motion */
+@media (prefers-reduced-motion: reduce){
+  * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+}
+
+/* Utility */
+.more a{ color:var(--neon-cyan); text-decoration:none; font-weight:700; }
