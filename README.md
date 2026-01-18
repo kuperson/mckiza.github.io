@@ -115,7 +115,7 @@ Website for kin.lancelot
 
     <section id="contact" class="section contact container">
       <h2>Contact</h2>
-      <p>If you'd like to work together or chat about open-source, email me at <a href="mailto:hello@mckiza.io">hello@mckiza.io</a> or find me on <a href="https://github.com/mckiza" target="_blank" rel="noopener">GitHub</a>.</p>
+      <p>If you'd like to work together or chat about open-source, email me at <a href="mailto:mckiza165@gmail.com">hello@mckiza.io</a> or find me on <a href="https://github.com/mckiza" target="_blank" rel="noopener">GitHub</a>.</p>
 
       <div class="contact-grid">
         <div class="contact-card">
