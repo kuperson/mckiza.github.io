@@ -263,3 +263,9 @@ h1,h2,h3,h4 { font-family: "Orbitron", system-ui, -apple-system, "Segoe UI", Rob
 
 /* Utility */
 .more a{ color:var(--neon-cyan); text-decoration:none; font-weight:700; }
+
+#about img {
+  border-radius: 50%;   /* makes it circular */
+  display: block;       /* centers it */
+  margin: 0 auto;       /* centers horizontally */
+}
