@@ -5,15 +5,15 @@ Website for kin.lancelot
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>mckiza — Software Engineer & Designer</title>
+  <title>mckinnan — Software Engineer & Designer</title>
   <meta name="description" content="Portfolio and projects by mckiza — software engineering, web development and design." />
 
   <!-- Open Graph / Twitter -->
-  <meta property="og:title" content="mckiza — Software Engineer & Designer" />
+  <meta property="og:title" content="mckinnan — Software Engineer & Designer" />
   <meta property="og:description" content="Portfolio and projects by Kuperson — software engineering, web development and design." />
   <meta property="og:type" content="website" />
   <!-- Replace with a real image URL after you add /assets/og-image.png -->
-  <meta property="og:image" content="https://mckiza.github.io/assets/og-image.png" />
+  <meta property="og:image" content="https://mckinnan.github.io/assets/og-image.png" />
   <meta name="twitter:card" content="summary_large_image" />
 
   <!-- Google Fonts -->
@@ -132,7 +132,7 @@ Website for kin.lancelot
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <p>© <span id="year"></span> Kuperson — <a href="https://github.com/mckiza" target="_blank" rel="noopener">GitHub</a> · <a href="/resume.pdf">Resume</a></p>
+      <p>© <span id="year"></span> Kuperson — <a href="https://github.com/mckinnan" target="_blank" rel="noopener">GitHub</a> · <a href="/resume.pdf">Resume</a></p>
     </div>
   </footer>
 
